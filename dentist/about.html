@@ -1,10 +1,11 @@
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
+		<!-- <link rel="shortcut icon" href="img/fav.png"> -->
 		<!-- Author Meta -->
 		<meta name="author" content="colorlib">
 		<!-- Meta Description -->
@@ -12,11 +13,13 @@
 		<!-- Meta Keyword -->
 		<meta name="keywords" content="">
 		<!-- meta character set -->
-		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	  <meta charset="utf-8">
+		<!-- <meta charset="UTF-8"> -->
 		<!-- Site Title -->
 		<title>Dentist</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
 			CSS
 			============================================= -->
@@ -24,31 +27,134 @@
 			<link rel="stylesheet" href="css/font-awesome.min.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/nice-select.css">							
+			<link rel="stylesheet" href="css/nice-select.css">
 			<link rel="stylesheet" href="css/animate.min.css">
-			<link rel="stylesheet" href="css/jquery-ui.css">			
+			<link rel="stylesheet" href="css/jquery-ui.css">
 			<link rel="stylesheet" href="css/owl.carousel.css">
 			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		  <title>Place Searches</title>
+		  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		  <meta charset="utf-8">
+		  <style>
+		    /* Always set the map height explicitly to define the size of the div
+		       * element that contains the map. */
+		    #map {
+		      height: 100%;
+		    }
+
+		    /* Optional: Makes the sample page fill the window. */
+		    html,
+		    body {
+		      height: 85%;
+		      width: 85%;
+		      margin: 0px;
+		      padding: 10px;
+					/* position: absolute;
+		      top: 20px;
+		      left: 80px; */
+		    }
+		  </style>
+		  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+			<script>
+		    // This example requires the Places library. Include the libraries=places
+		    // parameter when you first load the API. For example:
+		    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+		    var map;
+		    var infowindow;
+
+		    function initMap() {
+		      var pyrmont = {
+		        lat: 20.2562,
+		        lng: 85.7801
+		      };
+
+		      map = new google.maps.Map(document.getElementById('map'), {
+		        center: pyrmont,
+		        zoom: 15
+		      });
+
+		      infowindow = new google.maps.InfoWindow();
+		      if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(function(position) {
+		          var pos = {
+		            lat: position.coords.latitude,
+		            lng: position.coords.longitude
+		          };
+
+		          infowindow.setPosition(pos);
+		          infowindow.setContent('YOU ARE HERE');
+		          infowindow.open(map);
+		          map.setCenter(pos);
+		        }, function() {
+		          handleLocationError(true, infowindow, map.getCenter());
+		        });
+		      } else {
+		        // Browser doesn't support Geolocation
+		        handleLocationError(false, infowindow, map.getCenter());
+		      }
+		      var service = new google.maps.places.PlacesService(map);
+		      service.nearbySearch({
+		        location: pyrmont,
+		        radius: 5000,
+		        type: ['hospital'],
+		        // rankBy: google.maps.places.RankBy.DISTANCE
+		      }, callback);
+		    }
+
+		    function callback(results, status) {
+		      if (status === google.maps.places.PlacesServiceStatus.OK) {
+		        console.log(results);
+		        for (var i = 0; i < results.length; i++) {
+		          createMarker(results[i]);
+		        }
+		      }
+		    }
+
+		    function handleLocationError(browserHasGeolocation, infowindow, pos) {
+		      infowindow.setPosition(pos);
+		      infowindow.setContent(browserHasGeolocation ?
+		        'Error: The Geolocation service failed.' :
+		        'Error: Your browser doesn\'t support geolocation.');
+		      infowindow.open(map);
+		    }
+
+		    function createMarker(place) {
+		      var placeLoc = place.geometry.location;
+		      var marker = new google.maps.Marker({
+		        map: map,
+		        position: place.geometry.location
+		      });
+
+		      google.maps.event.addListener(marker, 'click', function() {
+		        infowindow.setContent(place.name);
+		        infowindow.open(map, this);
+		      });
+		    }
+		  </script>
 		</head>
-		<body>	
+		<body>
 			  <header id="header" id="home">
 		  		<div class="header-top">
 		  			<div class="container">
 				  		<div class="row align-items-center">
 				  			<div class="col-lg-6 col-sm-6 col-4 header-top-left no-padding">
-				        		<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>			
+				        		<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
 				  			</div>
 				  			<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
 								<a class="btns" href="tel:+953 012 3654 896">+953 012 3654 896</a>
-				  				<a class="btns" href="mailto:support@colorlib.com">support@colorlib.com</a>		
+				  				<a class="btns" href="mailto:support@colorlib.com">support@colorlib.com</a>
 				  				<a class="icons" href="tel:+953 012 3654 896">
 				  					<span class="lnr lnr-phone-handset"></span>
 				  				</a>
 				  				<a class="icons" href="mailto:support@colorlib.com">
 				  					<span class="lnr lnr-envelope"></span>
-				  				</a>		
+				  				</a>
 				  			</div>
-				  		</div>			  					
+				  		</div>
 		  			</div>
 				</div>
 			    <div class="container main-menu">
@@ -68,11 +174,11 @@
 					              <li><a href="#">Item One</a></li>
 					              <li><a href="#">Item Two</a></li>
 					            </ul>
-					          </li>					              
+					          </li>
 				            </ul>
-				          </li>	
-				          <li><a href="pricing.html">Pricing</a></li>				          	          
-				          <li><a href="elements.html">Elements</a></li>				          	          
+				          </li>
+				          <li><a href="pricing.html">Pricing</a></li>
+				          <li><a href="elements.html">Elements</a></li>
 				          <li><a href="contact.html">Contact</a></li>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->
@@ -81,373 +187,28 @@
 						<a href="#"><i class="fa fa-twitter"></i></a>
 						<a href="#"><i class="fa fa-dribbble"></i></a>
 						<a href="#"><i class="fa fa-behance"></i></a>
-					</div>	    		
+					</div>
 			    	</div>
 			    </div>
 			  </header><!-- #header -->
-			  
+
 			<!-- start banner Area -->
-			<section class="banner-area relative about-banner" id="home">	
+			<section class="banner-area relative about-banner" id="home">
 				<div class="overlay overlay-bg"></div>
-				<div class="container">				
+				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								About Us				
-							</h1>	
+								About Us
+							</h1>
 							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> About Us</a></p>
-						</div>	
+						</div>
 					</div>
 				</div>
 			</section>
-			<!-- End banner Area -->	
+			<div id="map"></div>
+		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZYPOw4wlwJukOjV2p-SAjMo9fiXdSGxY&libraries=places&callback=initMap" async defer></script>
 
-			<!-- Start feature Area -->
-			<section class="feature-area section-gap">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Features that make us unique</h1>
-								<p>Who are in extremely love with eco friendly system.</p>
-							</div>
-						</div>
-					</div>							
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="single-feature d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-rocket"></span>
-								</div>
-								<div class="details">
-									<h4>24/7 Emergency</h4>
-									<p>
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-feature d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-heart-pulse"></span>
-								</div>
-								<div class="details">
-									<h4>Expert Consultation</h4>
-									<p>
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-feature d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-chart-bars"></span>
-								</div>
-								<div class="details">
-									<h4>X-Ray Service</h4>
-									<p>
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-									</p>
-								</div>
-							</div>
-						</div>												
-						<div class="col-lg-6">
-							<div class="single-feature d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-paw"></span>
-								</div>
-								<div class="details">
-									<h4>Dental Science</h4>
-									<p>
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-feature d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-bug"></span>
-								</div>
-								<div class="details">
-									<h4>Intensive Care</h4>
-									<p>
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-feature d-flex flex-row">
-								<div class="icon">
-									<span class="lnr lnr-users"></span>
-								</div>
-								<div class="details">
-									<h4>Family Planning</h4>
-									<p>
-										inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct women face higher conduct.
-									</p>
-								</div>
-							</div>
-						</div>							
-					</div>
-				</div>	
-			</section>
-			<!-- End feature Area -->
-
-			<!-- Start home-about Area -->
-			<section class="home-about-area section-gap relative">			
-				<div class="container">
-					<div class="row align-items-center justify-content-end">
-						<div class="col-lg-6 no-padding home-about-right">
-							<h1 class="text-white">
-								Who we are <br>
-								to Serve the nation
-							</h1>
-							<p>
-								inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach.
-							</p>
-							<div class="row no-gutters">
-								<div class="single-services col">
-									<span class="lnr lnr-diamond"></span>
-									<a href="#">
-										<h4 class="text-white">Expert Services</h4>
-									</a>
-									<p>
-										Usage of the Internet is becoming more common due to rapid advancement of technology.
-									</p>
-								</div>
-								<div class="single-services col">
-									<span class="lnr lnr-phone"></span>
-									<a href="#">
-										<h4 class="text-white">Great Support</h4>
-									</a>
-									<p>
-										Usage of the Internet is becoming more common due to rapid advancement of technology.
-									</p>
-								</div>								
-							</div>
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End home-about Area -->	
-			
-			<!-- Start team Area -->
-		    <section class="team-area section-gap" id="team">
-		        <div class="container">
-		            <div class="row d-flex justify-content-center">
-		                <div class="menu-content pb-70 col-lg-8">
-		                    <div class="title text-center">
-		                        <h1 class="mb-10">Our Consultants</h1>
-		                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua.</p>
-		                    </div>
-		                </div>
-		            </div>
-		            <div class="row justify-content-center d-flex align-items-center">
-		                <div class="col-lg-3 col-md-6 single-team">
-		                    <div class="thumb">
-		                        <img class="img-fluid" src="img/t1.jpg" alt="">
-		                        <div class="align-items-end justify-content-center d-flex">
-		                            <p>
-		                            	inappropriate behavior
-		                            </p>
-		                            <h4>Andy Florence</h4>		                            
-		                        </div>
-		                    </div>
-		                </div>
-		                <div class="col-lg-3 col-md-6 single-team">
-		                    <div class="thumb">
-		                        <img class="img-fluid" src="img/t2.jpg" alt="">
-		                        <div class="align-items-end justify-content-center d-flex">
-		                            <p>
-		                            	inappropriate behavior
-		                            </p>
-		                            <h4>Andy Florence</h4>		                            
-		                        </div>
-		                    </div>
-		                </div>
-		                <div class="col-lg-3 col-md-6 single-team">
-		                    <div class="thumb">
-		                        <img class="img-fluid" src="img/t3.jpg" alt="">
-		                        <div class="align-items-end justify-content-center d-flex">
-		                            <p>
-		                            	inappropriate behavior
-		                            </p>
-		                            <h4>Andy Florence</h4>		                            
-		                        </div>
-		                    </div>
-		                </div>
-		                <div class="col-lg-3 col-md-6 single-team">
-		                    <div class="thumb">
-		                        <img class="img-fluid" src="img/t4.jpg" alt="">
-		                        <div class="align-items-end justify-content-center d-flex">
-		                            <p>
-		                            	inappropriate behavior
-		                            </p>
-		                            <h4>Andy Florence</h4>		                            
-		                        </div>
-		                    </div>
-		                </div>		                		                		                
-		            </div>
-		        </div>
-		    </section>
-		    <!-- End team Area -->	
-
-			<!-- Start appoinment Area -->
-			<section class="appoinment-area section-gap relative">			
-				<div class="container">
-					<div class="row align-items-center justify-content-end">
-						<div class="col-lg-6 no-padding appoinment-right">
-							<h1 class="text-white">
-								Book an <br> 
-								Appoinment
-							</h1>
-		                    <form class="appoinment-form" id="myForm" action="#">
-		                        <div class="row">
-		                            <div class="col-lg-12 d-flex flex-column">
-		                                <input name="patient-name" placeholder="Patient Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Patient Name'" class="form-control mt-20" required="" type="text">
-		                            </div>
-		                            <div class="col-lg-6 d-flex flex-column">
-		                                <input name="phone" placeholder="Phone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone'" class="form-control mt-20" required="" type="text">
-		                            </div>
-		                            <div class="col-lg-6 d-flex flex-column">
-		                                <input name="email" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" class="form-control mt-20" required="" type="email">
-		                            </div>
-		                            <div class="col-lg-6 d-flex flex-column">
-		                                <input name="dob" placeholder="Date of birth" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Date of birth'" class="form-control mt-20" required="" type="text" id="datepicker">
-		                            </div>			                            
-		                            <div class="col-lg-6 d-flex flex-column">
-		                                <input name="appoinment-date" placeholder="Appoinment date" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Appoinment date'" class="form-control mt-20" required="" type="text" id="datepicker2">
-		                            </div>	                            
-		                            <div class="col-lg-12 flex-column">
-		                                <textarea  rows="5" class="form-control mt-20" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-		                            </div>
-
-		                            <div class="col-lg-12 d-flex justify-content-end send-btn">
-		                                <button class="genric-btn primary mt-20 text-uppercase ">Confirm booking</button>
-		                            </div>
-
-		                            <div class="alert-msg"></div>
-		                        </div>
-		                    </form>							
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End appoinment Area -->	
-
-			<!-- Start testomial Area -->
-			<section class="testomial-area section-gap">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Feedback from our real clients</h1>
-								<p>It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="active-testimonial-carusel">
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t1.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t2.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t3.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>	
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t1.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t2.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t3.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>															
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t1.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t2.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>
-							<div class="single-testimonial item">
-								<img class="mx-auto" src="img/t3.png" alt="">
-								<p class="desc">
-									Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware and more. laptop accessory
-								</p>
-								<h4>Mark Alviro Wiens</h4>
-								<p>
-									CEO at Google
-								</p>
-							</div>														
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End testomial Area -->						    																			
-			<!-- start footer Area -->		
 			<footer class="footer-area section-gap">
 				<div class="container">
 					<div class="row">
@@ -471,7 +232,7 @@
 								<h3>012-6532-568-9746</h3>
 								<h3>012-6532-568-97468</h3>
 							</div>
-						</div>							
+						</div>
 						<div class="col-lg-6  col-md-12">
 							<div class="single-footer-widget newsletter">
 								<h6>Newsletter</h6>
@@ -485,17 +246,17 @@
 												<div style="position: absolute; left: -5000px;">
 													<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
 												</div>
-											</div> 
-										
+											</div>
+
 											<div class="col-lg-4 col-md-12">
 												<button class="nw-btn primary-btn">Subscribe<span class="lnr lnr-arrow-right"></span></button>
-											</div> 
-										</div>		
+											</div>
+										</div>
 										<div class="info"></div>
 									</form>
-								</div>		
+								</div>
 							</div>
-						</div>					
+						</div>
 					</div>
 
 					<div class="row footer-bottom d-flex justify-content-between">
@@ -515,17 +276,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>			
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-  			<script src="js/easing.min.js"></script>			
+			<script src="js/vendor/bootstrap.min.js"></script>
+			<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script> -->
+  			<script src="js/easing.min.js"></script>
 			<script src="js/hoverIntent.js"></script>
-			<script src="js/superfish.min.js"></script>	
+			<script src="js/superfish.min.js"></script>
 			<script src="js/jquery.ajaxchimp.min.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>	
- 			<script src="js/jquery-ui.js"></script>			
-			<script src="js/owl.carousel.min.js"></script>						
-			<script src="js/jquery.nice-select.min.js"></script>							
-			<script src="js/mail-script.js"></script>	
-			<script src="js/main.js"></script>	
+			<script src="js/jquery.magnific-popup.min.js"></script>
+ 			<script src="js/jquery-ui.js"></script>
+			<script src="js/owl.carousel.min.js"></script>
+			<script src="js/jquery.nice-select.min.js"></script>
+			<script src="js/mail-script.js"></script>
+			<script src="js/main.js"></script>
 		</body>
 	</html>
