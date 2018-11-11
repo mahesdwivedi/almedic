@@ -59,6 +59,11 @@ h1{
   color: #fff;
   font-size: 20px;
   margin-top: 30px;
-  border-radius: 10%;
+  border-radius: 5%;
 
+}
+
+.container input[type="submit"]:hover{
+  cursor: pointer;
+  background:#F56A1B;
 }
