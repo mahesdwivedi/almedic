@@ -87,7 +87,7 @@ app.use(session({
 server.listen(portNumber, function() { //Runs the server on port 8000
     console.log('Server listening at port ' + portNumber);
 
-    var url = 'mongodb://localhost:27017/ambulancego'; //Db name
+    var url = 'mongodb://localhost:27017/almedic'; //Db name
     mongoose.Promise = global.Promise;
     mongoClient.connect(url, function(err, db) { //a connection with the mongodb is established here.
         console.log("Connected to Database");

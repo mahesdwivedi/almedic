@@ -5,7 +5,7 @@ const Availables = require('../models/avail');
 const Requires = require('../models/req');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-mongoose.connect('mongodb://localhost/report');
+mongoose.connect('mongodb://localhost/almedic');
 var db = mongoose.connection;
 
 //handle mongo error

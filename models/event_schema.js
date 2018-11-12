@@ -6,5 +6,5 @@ body : { type: String, default: 'event here' },
 din: { type: String, default:'date'}
 // date: { type: Date, default: Date.now }
 });
-var events = mongoose.model('almedic', eventSchema);
-module.exports= events;
+
+module.exports= mongoose.model('event', eventSchema);
