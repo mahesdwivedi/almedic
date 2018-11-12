@@ -16,7 +16,7 @@
 		<!-- Site Title -->
 		<title>Dentist</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+		<!-- <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">-->
 			<!--
 			CSS
 			============================================= -->
@@ -87,19 +87,20 @@
 			  </header><!-- #header -->
 <body>
 	<div class="grid-container">
-
-	<div class="card">
+	<% for(var i = 0; i < data.length; i++){ %>
+		<div class="card">
 			<span class="pict"><img class="face" src="https://comps.canstockphoto.com/medical-healthcare-symbol-clip-art-vector_csp44789165.jpg" alt="e1">	</span>
-		<div class="topic">Test Event
+		<div class="topic"><%= data[i].title %>
 		</div>
-		<div class="content">this a test event done on sunday.
+		<div class="content"><%= data[i].body %>
 		</div>
-		<div class="d-in"><span>posted on</span>10-11-2018
+		<div class="d-in"><span>posted on</span><%= data[i].date %>
 		</div>
 		<div class="d-out">18-11-2018
 		</div>
 	</div>
 </div>
+<%}%>
 </body>
 <style media="screen">
 .grid-container{
@@ -209,7 +210,7 @@
 
 					<div class="row footer-bottom d-flex justify-content-between">
 						<p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Copyright &copy;<script>document.write all rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 						<div class="col-lg-4 col-sm-12 footer-social">
 							<a href="#"><i class="fa fa-facebook"></i></a>

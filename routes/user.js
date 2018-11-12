@@ -16,12 +16,12 @@ router.get('/login', function(req, res) {
   res.render('pages/login');
 });
 router.get('/events', function(req, res) {
-//   var query = events.find({})
-//   query.select('title body din');
-//   query.exec((err,data) => {
-//     console.log(data);
-    res.render('events');
-// })
+  var query = events.find({})
+  query.select('title body din');
+  query.exec((err,data) => {
+    console.log(data);
+    res.render('events',{"data":data});
+})
 });
 router.get('/reportupload', function(req, res) {
   res.render('pages/reportupload');
@@ -42,9 +42,9 @@ router.post('/enter', function(req, res) {
   let newEvent = new event(req.body);
   console.log(newEvent);
   newEvent.save()
-    .then(user => {
-      console.log(user);
-    })
+    // .then(user => {
+    //   console.log(user);
+    // })
     .then(res.render('events'))
     .catch((err) => console.log(err))
 });
