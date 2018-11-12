@@ -14,6 +14,17 @@ db.once('open', function () {
   // we're connected!
   console.log("Database connected");
 });
+router.get('/enter', (req, res)=> {
+  res.render('add')
+})
+router.post('/enter', function(req, res) {
+  console.log(req.body);
+  let newNotice = new Notice(req.body);
+  console.log(newNotice);
+  newNotice.save()
+    .then(res.render('index'))
+    .catch((err) => console.log(err))
+});
 
 router.get('/requirement', function(req, res, next) {
     db.collection('Requires').find().toArray((err, result) => {

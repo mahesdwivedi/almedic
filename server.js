@@ -41,7 +41,7 @@ var mongoClient = require("mongodb").MongoClient;
 var routes = require('./routes');
 
 var io = require('socket.io')(server); //Creating a new socket.io instance by passing the HTTP server object
-var portNumber = 8080;
+var portNumber = 5000;
 
 var mainRoutes = require('./routes/main');
 var userRoutes = require('./routes/user');
