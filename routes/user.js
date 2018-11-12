@@ -42,9 +42,6 @@ router.post('/enter', function(req, res) {
   let newEvent = new event(req.body);
   console.log(newEvent);
   newEvent.save()
-    // .then(user => {
-    //   console.log(user);
-    // })
     .then(res.render('events'))
     .catch((err) => console.log(err))
 });
