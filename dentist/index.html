@@ -14,9 +14,9 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Almedic</title>
+		<title>Dentist</title>
 
-		<!-- <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
 			CSS
 			============================================= -->
@@ -40,12 +40,12 @@
 				        		<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
 				  			</div>
 				  			<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
-								 
-				  				<a class="btns" href="mailto: "> </a>
+								<a class="btns" href="tel:+953 012 3654 896">+953 012 3654 896</a>
+				  				<a class="btns" href="mailto:support@colorlib.com">support@colorlib.com</a>
 				  				<a class="icons" href="tel:+953 012 3654 896">
 				  					<span class="lnr lnr-phone-handset"></span>
 				  				</a>
-				  				<a class="icons" href="mailto: ">
+				  				<a class="icons" href="mailto:support@colorlib.com">
 				  					<span class="lnr lnr-envelope"></span>
 				  				</a>
 				  			</div>
@@ -60,7 +60,7 @@
 				          <li><a href="about.html">About</a></li>
 				          <li><a href="services.html">Services</a></li>
 				          <li><a href="opening-hour.html">Opening Hour </a></li>
-				          <li class="menu-has-children"><a href="">Blog</a>
+				          <!-- <li class="menu-has-children"><a href="">Blog</a>
 				            <ul>
 				              <li><a href="blog-home.html">Blog Home</a></li>
 				              <li><a href="blog-single.html">Blog Single</a></li>
@@ -74,8 +74,9 @@
 				          </li>
 				          <li><a href="pricing.html">Pricing</a></li>
 				          <li><a href="elements.html">Elements</a></li>
-				          <li><a href="contact.html">Contact</a></li>
-									<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				          <li><a href="contact.html">Contact</a></li> -->
+
+									<button onclick="document.getElementById('id01').style.display='block'" id="button" style="width:auto;"><i class="fa fa-user-circle" aria-hidden="true"></i>Login</button>
 				        </ul>
 				      </nav><!-- #nav-menu-container -->
 			    		<body>
@@ -103,8 +104,18 @@ window.onclick = function(event) {
 }
 </script>
 <style>
+
+.is-blurred {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
 .loginbox{
 	background: #33A65B;
+	-webkit-transition: 1.5s;
+
+  transition: all 1.3s linear;
+
 }
 .loginbox h1{
 	color: white;
@@ -115,6 +126,13 @@ window.onclick = function(event) {
 }
 .loginbox p{
 	color: white;
+}
+#button{
+	color: #fff;
+	background-color: #33A65B;
+	margin-left:500px;
+
+	font-size: 20px;
 }
 </style>
 
@@ -128,12 +146,12 @@ window.onclick = function(event) {
 				<div class="container">
 					<div class="row fullscreen d-flex justify-content-center align-items-center">
 						<div class="banner-content col-lg-9 col-md-12 justify-content-center">
-							<h6 class="text-uppercase">Don’t look further, This is your Almedic</h6>
+							<h6 class="text-uppercase">Don’t look further, This is your all and all solution</h6>
 							<h1>
-								Authentic Dental Service
+								ALMEDIC
 							</h1>
 							<p class="text-white mx-auto">
-								If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each. You may be saying to yourself.
+								If you are looking for any medical solution, you may have arrived at the perfect place . This website offers a wide variety of help.
 							</p>
 							<a href="#" class="primary-btn header-btn text-uppercase mt-10">Get Started</a>
 						</div>
@@ -152,7 +170,7 @@ window.onclick = function(event) {
 
 							 <img class="pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEH6TeYT_RS9Okek8-fa9A2PNxs9yIk50BF_oirNPUkaWoxXj6xQ">
 							 <img class="pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9bJDFrGjJItDhzEp2iVm-zDdoIDq0IhO1K6CdszkrQSbHJxT1">
-							 <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX15341757.jpg" alt="hospital" class="pic"><br>
+							 <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX15341757.jpg" alt="hospital" class="pic"><br><br>
 							 <span class="txt">Ambulance-Go</span>
 							 <span class="txt">pill-list</span>
 							 <span class="txt">Events</span>
@@ -166,8 +184,11 @@ window.onclick = function(event) {
 			<style>
 			.txt{
 
-				margin-left: 30px;
-				margin-right: 30px;
+				margin-left: 100px;
+				font-size: 20px;
+
+
+
 			}
 			.pic{
 				height: 80px;
