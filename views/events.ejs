@@ -29,6 +29,60 @@
 			<link rel="stylesheet" href="css/jquery-ui.css">
 			<link rel="stylesheet" href="css/owl.carousel.css">
 			<link rel="stylesheet" href="css/main.css">
+			<style media="screen">
+			.grid-container{
+				display: grid;
+				grid-template-columns: auto auto auto;
+				background-color: white;
+				grid-column-gap: 30px;
+				grid-row-gap: 30px;
+				margin-top: 130px;
+				margin-bottom: 130px;
+				padding-bottom: 50px;
+				padding-top: 50px;
+			}
+				.card{
+					box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+			      transition: 0.3s;
+						border: 2px solid #DDDDDD;
+			      border-radius: 25px;
+			      background-color: white;
+						align-self: auto;
+						margin-left: 50px;
+						width: 300px;
+						height: 200px;
+
+					 background-image: linear-gradient(to bottom right, white , rgba(129, 204, 0, 1))
+				}
+				.face{
+					border: solid black	;
+					border-radius: 25px;
+					height: 80px;
+					width: 80px;
+					position: relative;
+					top: -20px;
+					left: 20px;
+				}
+				.topic{
+					font-weight: bold;
+					padding-left: 25px;
+
+				}
+				.content{
+					padding-left: 30px;
+				}
+				.d-in{
+					position: absolute;
+					bottom: 5px;
+					right: 5px;
+					padding-right: 20px;
+				}
+				.d-out{
+					position: absolute;
+					top: 10px;
+					right: 10px;
+				}
+			</style>
 		</head>
 		<body>
 			  <header id="header" id="home">
@@ -85,77 +139,22 @@
 			    	</div>
 			    </div>
 			  </header><!-- #header -->
-<body>
 	<div class="grid-container">
-	<% for(var i = 0; i < data.length; i++){ %>
+	<% for(var i = 0; i < datas.length; i++){ %>
 		<div class="card">
 			<span class="pict"><img class="face" src="https://comps.canstockphoto.com/medical-healthcare-symbol-clip-art-vector_csp44789165.jpg" alt="e1">	</span>
-		<div class="topic"><%= data[i].title %>
+		<div class="topic"><%= datas[i].title %>
 		</div>
-		<div class="content"><%= data[i].body %>
+		<div class="content"><%= datas[i].body %>
 		</div>
-		<div class="d-in"><span>posted on</span><%= data[i].date %>
+		<div class="d-in"><span>posted on</span><%= datas[i].din %>
 		</div>
 		<div class="d-out">18-11-2018
 		</div>
 	</div>
+		<% }%>
 </div>
-<%}%>
-</body>
-<style media="screen">
-.grid-container{
-	display: grid;
-	grid-template-columns: auto auto auto;
-	background-color: white;
-	grid-column-gap: 30px;
-	grid-row-gap: 30px;
-	margin-top: 130px;
-	margin-bottom: 130px;
-	padding-bottom: 50px;
-	padding-top: 50px;
-}
-	.card{
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      transition: 0.3s;
-			border: 2px solid #DDDDDD;
-      border-radius: 25px;
-      background-color: white;
-			align-self: auto;
-			margin-left: 50px;
-			width: 300px;
-			height: 200px;
 
-		 background-image: linear-gradient(to bottom right, white , rgba(129, 204, 0, 1))
-	}
-	.face{
-		border: solid black	;
-		border-radius: 25px;
-		height: 80px;
-		width: 80px;
-		position: relative;
-		top: -20px;
-		left: 20px;
-	}
-	.topic{
-		font-weight: bold;
-		padding-left: 25px;
-
-	}
-	.content{
-		padding-left: 30px;
-	}
-	.d-in{
-		position: absolute;
-		bottom: 5px;
-		right: 5px;
-		padding-right: 20px;
-	}
-	.d-out{
-		position: absolute;
-		top: 10px;
-		right: 10px;
-	}
-</style>
 
 			<!-- start footer Area -->
 			<footer class="footer-area section-gap">
