@@ -15,7 +15,7 @@
 </head>
 
 <body data-userId="<%= userId %>">
-  
+
   <div style = "text-align:center;">
     <h1>Hello Citizen
         <%= userId %>
@@ -93,7 +93,11 @@
             //Set the marker to new location
             marker.setLatLng([data.feature.center[1], data.feature.center[0]]);
         }));
-    </script>
+        </script>
+        <!---JQuery-1.11.3.js-->
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <!---BootStrap.js-->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

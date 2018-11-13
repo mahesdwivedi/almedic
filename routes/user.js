@@ -46,11 +46,11 @@ router.get('/enter', (req, res)=> {
   res.render('add')
 });
 router.get('/events', function(req, res) {
-  console.log(req.body);
-  let newEvent = new event(req.body);
-  console.log(newEvent);
-  newEvent.save()
-  .then(function() {
+  // console.log(req.body);
+  // let newEvent = new event(req.body);
+  // console.log(newEvent);
+  // newEvent.save()
+  // .then(function() {
   var query = event.find()
   console.log("Hello")
   query.select('title body din');
@@ -58,8 +58,7 @@ router.get('/events', function(req, res) {
      console.log(data);
     res.render('events',{"datas":data});
 })
-});
-});
+})
 // router.post('/enter', function(req, res) {
 //   console.log(req.body);
 //   let newEvent = new event(req.body);
