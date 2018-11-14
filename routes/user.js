@@ -8,6 +8,10 @@ var Schema = mongoose.Schema;
 var event = require('../models/event_schema');
 var pills = require('../models/pill_schema');
 
+router.get('/form',function (req, res) {
+  res.render('form');
+})
+
 router.get('/login', function(req, res) {
   res.render('pages/login');
 });
