@@ -33,20 +33,7 @@
     <link rel="shortcut icon" href="ASAP.ico" type="image/x-icon">
     <link rel="icon" href="ASAP.ico" type="image/x-icon">
     <style>
-        .navbar {
-            overflow: hidden;
-            background-color: #333 !important;
-            top: 0;
-            /* Position the navbar at the top of the page */
-            width: 100%;
-            /* Full width */
-            box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
-        }
 
-        .navbar a:hover {
-            color: green !important;
-            font-size: 1.5em;
-        }
     </style>
 
     <!---Font Family Exo+2 CSS-->
@@ -81,6 +68,7 @@
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
+            <%- partial('navbar') %>
             <!-- <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
