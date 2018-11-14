@@ -3,17 +3,23 @@
 <title>Add Notice </title>
 <link rel="stylesheet" type="text/css" href="dentist/scss/consultstyle.css">
 <style>
+body{
+  background: url(http://hauntedstate.com/wp-content/uploads/2014/12/grunge1-1.jpg);
+  background-size: cover;
+}
 .container{
-  width: 330px;
-  height: 610px;
+  width: 400px;
+  height: 800px;
   background: #33A65B;
   color: #fff;
-  top:15%;
+  top:5%;
   left: 40%;
   position: absolute;
   transform: translate(-50% -50%);
   box-sizing: border-box;
-  padding: 70px 30px;
+  padding: 50px 30px;
+  opacity: 0.9;
+
 }
 
 h1{
@@ -22,6 +28,7 @@ h1{
   padding: 0;
   text-align: center;
   font-size: 30px;
+  text-shadow: 2px 2px 2px #000;
 }
 
 .container p{
@@ -30,6 +37,7 @@ h1{
   padding-bottom: 10px;
   font-weight: bold;
   font-size: 20px;
+
 
 }
 
@@ -40,6 +48,7 @@ h1{
   outline: none;
   height: 40px;
   font-size: 18px;
+  width: 100%;
 }
 
 ::placeholder{
@@ -55,6 +64,7 @@ h1{
   font-size: 18px;
   margin-top: 10px;
   border-radius: 5%;
+  text-shadow: 2px 2px 2px #000;
 
 }
 
@@ -99,14 +109,14 @@ h1{
         <option value="Others">Others</option>
       </select>
       <br>
-      <label for="number">Phone Number</label><br>
-      <input type="text" name="number" value=""><br>
-      <label for="email">Email-id</label>
-      <br>
-      <input type="text" name="email" value=""><br>
+      <label for="number"><p>Phone Number</p></label>
+      <input type="text" name="number" value="" placeholder="Enter contact no">
+      <label for="email"><p>Email-id</p></label>
+
+      <input type="text" name="email" value="" placeholder="Enter email id">
       <p>Symptoms</p>
 
-    <textarea rows="6" cols="31" type="text" placeholder="Enter Notice" name="message" required></textarea>
+    <textarea rows="6" cols="39" type="text" placeholder="Enter Notice" name="message" required></textarea>
     <br>
       <center><input type="submit" name="" value="Submit"></center>
 
