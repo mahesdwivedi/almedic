@@ -76,7 +76,6 @@ section .events ul li{
 }
 section .events ul li .time{
   position: relative;
-  padding: 20px;
   background: #262626;
   box-sizing: border-box;
   width: 30%;
@@ -108,9 +107,9 @@ section .events ul li .time .day{
 section .events ul li .time h2 span{
   font-size: 30px;
 }
-
 section .events ul li .details{
-  padding: 20px;
+  padding-left:  10px;
+  padding-top: 5px;
   background: #fff;
   box-sizing: border-box;
   width: 70%;
