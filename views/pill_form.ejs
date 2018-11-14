@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/pillstyle.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <img src="images/pill.png" class="avatar">
+
+      <h1>PILL DETAILS</h1><br>
+      <form method="POST" action="/pill">
+        <label for="medicine"><p>Medicine Name</p></label>
+        <input type="text" name="medicine" value="" placeholder="Enter Medicine Name"><br><br>
+        <!-- <p>Schedule</p> -->
+        <label for="days"><p>Schedule</p></label>
+        <textarea row="10" cols="32" placeholder="days" name="days" required></textarea>
+        <label for="dosage"><p>Dosage</p></label>
+        <textarea row="20" cols="32" placeholder="Enter Dosage" name="dosage" required></textarea>
+        <center><input type="submit" name="" value="Submit"></center>
+
+
+      </form>
+
+    </div>
+
+  </body>
+</html>

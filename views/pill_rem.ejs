@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang=" " dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="stylesheets/notcss.css">
+
+</head>
+
+<body>
+  <section>
+
+    <div class="leftbox">
+      <div class="content">
+        <h1>Pill Reference </h1>
+        
+      </div>
+
+    </div>
+    <div class="events">
+      <ul>
+      <% for(var i = 0; i < datas.length; i++){ %>
+        <li>
+          <div class="time">
+            <p class="day"><%= datas[i].days %></p>
+
+          </div>
+          <div class="details">
+            <h3>Pill Name:</h3>
+            <br>
+            <%= datas[i].medicine %>
+
+            <p>Dosage</p>
+            <br>
+            <%= datas[i].dosage %>
+          </div>
+          <div style="clear: both;">
+
+          </div>
+        </li>
+        <% }%>
+        <hr color:red>
+        <!-- <li>
+          <div class="time">
+            <h2>11<br><span>Nov</span></h2>
+
+          </div>
+          <div class="details">
+            <h3>dbhsdsdskksjdjbxmczkjk</h3>
+            <p>qwertyuioplkjhgfdsazxcvbnmkoplnjibhuvgycftxdrzseawq</p>
+
+          </div>
+          <div style="clear: both;">
+
+          </div>
+        </li> -->
+      </ul>
+
+    </div>
+  </section>
+
+</body>
+
+</html>
