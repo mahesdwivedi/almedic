@@ -58,29 +58,7 @@ app.use(session({
     })
   }));
 
-// mongoose.connect('mongodb://localhost:27017/ambulancego');
-// mongoose.Promise = global.Promise;
-// var db = mongoose.connection;
-// db.once('open', function () {
-//   console.log("Connection to MongoDB succesful...");
-// }).on('error', function (error) {
-//   console.log("MongoDB connection error: ", error);
-// });
-//
-// io.on('connection', function(socket) { //Listen on the 'connection' event for incoming sockets
-//     console.log('A user just connected');
-//
-//     socket.on('join', function(data) { //Listen to any join event from connected users
-//         socket.join(data.userId); //User joins a unique room/channel that's named after the userId
-//         console.log("User joined room: " + data.userId);
-//     });
-//
-//     routes.initialize(app, db, socket, io); //Pass socket and io objects that we could use at different parts of our app
-// });
-//
-// app.listen(8080, function () {
-//     console.log("Server is running at 8080");
-// });
+
 
 server.listen(portNumber, function() { //Runs the server on port 8000
     console.log('Server listening at port ' + portNumber);

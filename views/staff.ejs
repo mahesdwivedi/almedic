@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body{
+    background: #FAFAFA;
+}
+
+.profile-card2{
+  width:320px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  transition: all 150ms ease-in-out;
+}
+.profile-card2:hover{
+  border: 1px solid blue;
+  box-shadow: 0 0 10px 1px;
+}
+.card-header2{
+  align-self: center;
+  text-align: center;
+  background: #2196F3;
+  color: #FAFAFA !important;
+  padding: 0 4.1em 6em 4.1em;
+  transition: all 150ms ease-in-out;
+}
+.card-header2:hover{
+  background: #0960a5;
+}
+.image2{
+  margin-top: -90px;
+  height: 200px;
+  width: 200px;
+  align-self: center;
+  border-radius: 50%;
+  transition: all 150ms ease-in-out;
+}
+.image2:hover{
+  border-radius: 10%;
+}
+.card-info2{
+  padding: 1em;
+}
+.bottom2 h2{
+  text-align:center;
+}
+.card-footer2{
+  width: 310px;
+  border-top: 1px solid gray;
+  align-self: center;
+}
+.card-footer2 ul{
+  display:flex;
+  justify-content: flex-start;;
+}
+.card-footer2 ul li:last-child{
+  margin-left: 85px;
+}
+
+/*COMPARE CSS VS FLEXBOX*/
+.compare{
+  display:flex;
+  justify-content: space-around;
+}
+
+/*Align cards so normal css an flexbox display above cards*/
+.profile-card, .profile-card2{
+  margin-top: 100px;
+  width:23%;
+}
+.version1, .version2{
+  position:relative;
+  left:320px;
+  color: #BDBDBD;
+}
+/*Misc hover animations for titles*/
+.version1:hover, .version2:hover{
+  animation: change 2s infinite;
+  max-height:100px;
+}
+
+@keyframes change{
+  0%{color:#BDBDBD;}
+  100%{color:#37474F;}
+}
+
+
+
+</style>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="ASAP.ico" type="image/x-icon">
+    <link rel="icon" href="ASAP.ico" type="image/x-icon">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/style1.css">
+        <script type="text/javascript" src="/js/index.js"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Comfortaa|Patua+One');
+        </style>
+    </head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" style="font-size:32px">ASAP</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/staff">Doctor</a></li>
+                <li><a href="/exchange"> Staff Exchange</a></li>
+                <li><a href="/medicine">Medicine Hub</a></li>
+                <li><a href="/record">Issue Record</a></li>
+                <li><a href="/AmbulanceGo">AmbulanceGo</a></li>
+                <li><a href="/complain">Feedback</a></li>
+                <li><a href="/review">Reviews</a></li>
+            </ul>
+            </ul>
+        </div>
+    </nav>
+    <div id="myBtnContainer centered">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('cardiology')"> Cardiology</button>
+        <button class="btn" onclick="filterSelection('nephrologist')"> Nephrologist</button>
+        <button class="btn" onclick="filterSelection('dermatologist')"> Dermatologist</button>
+        <button class="btn" onclick="filterSelection('Neurology')"> Neurology</button>
+    </div>
+    <div class="container1">
+        <a href="https://www.google.co.in/search?q=various+public+hospitas+address+in+pune&npsic=0&rflfq=1&rlha=0&rllag=18532602,73872775,7893&tbm=lcl&ved=2ahUKEwi1jojjwdXdAhWUfn0KHTEDCPwQjGp6BAgFEEI&tbs=lrf:!2m1!1e2!2m1!1e3!2m1!1e16!3sIAE,lf:1,lf_ui:2&rldoc=1#rlfi=hd:;si:18107018162897268078;mv:!3m12!1m3!1d39406.30627138846!2d73.86334775!3d18.528653000000002!2m3!1f0!2f0!3f0!3m2!1i506!2i250!4f13.1">
+            <h1>Sardar Vallabhbhai Patel Cantonment General Hospital Pune</h1>
+        </a>
+        <main class="main-area">
+
+            <div class="centered">
+
+                <section class="cards" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="500"
+                    data-aos-offset="0">
+
+                    <article class="card filterDiv cardiology" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="/images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Rahul Sawant</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Cardiology</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Sardar Vallabhbhai Patel Cantonment
+                                                    General Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+
+                    <article class="card filterDiv nephrologist" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="/images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Sachin Patil</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Nephrologist</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Sardar Vallabhbhai Patel Cantonment
+                                                    General Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+
+                    <article class="card filterDiv dermatologist" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="/images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Sonal Chavan</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Dermatologist</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Sardar Vallabhbhai Patel Cantonment
+                                                    General Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+                    <article class="card filterDiv Neurology" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="/images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Nitin Pai</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Neurology</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Sardar Vallabhbhai Patel Cantonment
+                                                    General Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+
+                </section><!-- .cards -->
+
+            </div><!-- .centered -->
+
+        </main>
+
+        <a href="https://www.google.co.in/search?q=various+public+hospitas+address+in+pune&npsic=0&rflfq=1&rlha=0&rllag=18532602,73872775,7893&tbm=lcl&ved=2ahUKEwi1jojjwdXdAhWUfn0KHTEDCPwQjGp6BAgFEEI&tbs=lrf:!2m1!1e2!2m1!1e3!2m1!1e16!3sIAE,lf:1,lf_ui:2&rldoc=1#rlfi=hd:;si:4302706644275660359;mv:!3m12!1m3!1d39406.30627138846!2d73.86334775!3d18.528653000000002!2m3!1f0!2f0!3f0!3m2!1i506!2i250!4f13.1">
+            <h1>Balaji Hospital</h1>
+        </a>
+
+
+        <main class="main-area">
+
+            <div class="centered">
+
+                <section class="cards" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="500"
+                    data-aos-offset="0">
+
+                    <article class="card filterDiv cardiology" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr. Ranjit Patil</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Cardiology</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Balaji Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+
+                    <article class="card filterDiv nephrologist" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Tarun K. Jeloka </span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Nephrologist</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Balaji Hospitall Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+
+                    <article class="card filterDiv dermatologist" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Vaseem Choudhary</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Dermatologist</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Balaji Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+                    <article class="card filterDiv Neurology" style="height:400px">
+                        <a href="#">
+                            <picture class="thumbnail">
+                                <img src="images/doctor.jpg" style="height: 200px;border-radius:50%;width:200px" alt="doc name">
+                            </picture>
+                            <div class="card-content">
+
+                                <div class="desc">
+                                    <h2>Dr1.: <i><span style="color: black">Dr.Rahul Kothari</span></i></h2>
+                                    <h2>Specializations:<i><span style="color: black">Neurology</span></i></h2>
+                                    <h2>Availability: <i><span style="color: black">Yes</span></i></h2>
+                                    <h2><a href=""><i><span style="color: black">Balaji Hospital Pune</span> </i></a></h2>
+                                </div>
+                            </div><!-- .card-content -->
+                        </a>
+                    </article><!-- .card -->
+
+                </section><!-- .cards -->
+
+            </div><!-- .centered -->
+
+        </main>
+
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        filterSelection("all")
+//
+
+    </script>
+</body>
+
+</html>

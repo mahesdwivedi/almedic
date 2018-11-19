@@ -14,6 +14,9 @@ router.get('/consult', function(req, res) {
 router.get('/AmbulanceGo', function(req, res) {
   res.render('AmbulanceGo')
 })
+router.get('/staff', function(req, res) {
+  res.render('staff')
+})
 //ambulancego routing
 router.get('/hospital', function(req, res) {
   res.render('hospital')

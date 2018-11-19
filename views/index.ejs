@@ -4,7 +4,7 @@
 		<style>
 		#initext{
 			position:relative;
-			top: 200px;
+			top: 300px;
 			left: 165px;
 			text-align: center;
 		}
@@ -22,7 +22,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Dentist</title>
+		<title> Almedic</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
@@ -43,8 +43,6 @@
 			  <header id="header" id="home">
 
 			    <%- partial('navbar') %><!-- #nav-menu-container -->
-			    		<body>
-							</body>
 							<script>
 // Get the modal
 var loginbox = document.getElementById('id01');
@@ -56,6 +54,16 @@ window.onclick = function(event) {
 }
 </script>
 <style>
+#txt1{
+	padding-right: 30px;
+}
+#txt2{
+margin-left: auto;
+}
+#txt4{
+	padding-right:60px;
+}
+
 #id01{
 	display:none;
 }
@@ -88,6 +96,20 @@ window.onclick = function(event) {
 
 	font-size: 20px;
 }
+
+You need to read up a bit more about the difference between background images and inline images. You cannot style an img tag as a background, it is a block level element, and flows with the document. A background image is a property of an element. Since you want this image to be the background of the whole page, you can apply the background image to the html or body elements.
+
+http://jsfiddle.net/8L9Ty/3/
+
+body {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 </style>
 
 			    	</div>
@@ -100,7 +122,7 @@ window.onclick = function(event) {
 				<div class="container">
 					<div class="row fullscreen d-flex justify-content-center align-items-center">
 						<div class="banner-content col-lg-9 col-md-12 justify-content-center">
-							<h6 class="text-uppercase">Don’t look further, This is your all and all solution</h6>
+							<h6 id="up" class="text-uppercase">Don’t look further, This is your all and all solution</h6>
 							<center><h1 id="initext">
 								ALMEDIC
 							</h1>
@@ -120,15 +142,15 @@ window.onclick = function(event) {
 					<div class="row justify-content-center">
 						<div class="col-lg-12 open-hour-wrap">
 							<div class="buttons">
-						<a href="ambulance-go.html"><img class="pic" src="https://us.123rf.com/450wm/imagevectors/imagevectors1509/imagevectors150900149/45475902-orange-ambulance-symbol-with-drop-shadow-on-white-background.jpg?ver=6"></a>
+						<img class="pic" src="https://us.123rf.com/450wm/imagevectors/imagevectors1509/imagevectors150900149/45475902-orange-ambulance-symbol-with-drop-shadow-on-white-background.jpg?ver=6">
 
 							 <img class="pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEH6TeYT_RS9Okek8-fa9A2PNxs9yIk50BF_oirNPUkaWoxXj6xQ">
 							 <img class="pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9bJDFrGjJItDhzEp2iVm-zDdoIDq0IhO1K6CdszkrQSbHJxT1">
 							 <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX15341757.jpg" alt="hospital" class="pic"><br><br>
-							 <span class="txt">Ambulance-Go</span>
-							 <span class="txt">pill-list</span>
-							 <span class="txt">Events</span>
-							 <span class="txt">Find a Hospital</span>
+							 <span class="txt" id="txt1">Ambulance-Go</span>
+							 <span class="txt" id="txt2">pill-list</span>
+							 <span class="txt" id="txt3">Events</span>
+							 <span class="txt" id="txt4">Find a Hospital</span>
 
 							</div>
 						</div>
@@ -137,12 +159,13 @@ window.onclick = function(event) {
 			</section>
 			<style>
 			.txt{
-
 				margin-left: 100px;
 				font-size: 20px;
-
-
-
+    			}
+			#up{
+				position: absolute;
+				top:280px;
+				right:60px;
 			}
 			.pic{
 				height: 80px;
