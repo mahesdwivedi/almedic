@@ -14,9 +14,7 @@ router.get('/consult', function(req, res) {
 router.get('/AmbulanceGo', function(req, res) {
   res.render('AmbulanceGo')
 })
-router.get('/staff', function(req, res) {
-  res.render('staff')
-})
+
 //ambulancego routing
 router.get('/hospital', function(req, res) {
   res.render('hospital')
@@ -24,16 +22,13 @@ router.get('/hospital', function(req, res) {
 //hospital routing
 router.get('/pill', function(req, res) {
   var query = pills.find()
-  console.log("Hello")
   query.select('medicine days dosage');
   query.exec((err,data) => {
-    console.log(data);
     res.render('pill_rem',{"datas":data});
   })
 });
 //pill page routing
 router.post('/pillForm', function(req, res) {
-  console.log(req.body);
   res.render('pill');
 });
 //pill form routing
@@ -48,41 +43,31 @@ router.get('/enter', (req, res)=> {
 router.get('/events', function(req, res) {
 
   var query = event.find()
-  console.log("Hello")
   query.select('title body din');
   query.exec((err,data) => {
-     console.log(data);
     res.render('events',{"datas":data});
 })
 })
 // events get routing
 router.post('/events', function(req, res) {
-  console.log(req.body);
   let newEvent = new event(req.body);
-  console.log(newEvent);
   newEvent.save()
   .then(function() {
     var query = event.find()
-    console.log("Hello")
     query.select('title body din');
     query.exec((err,data) => {
-      console.log(data);
       res.render('events',{"datas":data});
     })
   });
 });
 //events post routing
 router.post('/pill', function(req, res) {
-  console.log(req.body);
   let newPill = new pills(req.body);
-  console.log(newPill);
   newPill.save()
   .then(function() {
-    console.log("Hello");
     var query = pills.find();
     query.select('medicine days dosage');
     query.exec((err,data) => {
-      console.log(data);
       res.render('pill_rem',{"datas":data});
     })
   })
@@ -92,4 +77,12 @@ router.post('/pill', function(req, res) {
     }
   )
 });
+router.get('/adminlogin',function(req,res){
+  res.render('adminlogin')
+})
+router.post('/adminlogin', function(req,res){
+  console.log(req.body);
+  if(req.body.userid=="mahes" && req.body.password=="mahes")
+  res.render('pillForm')
+})
 module.exports = router;
